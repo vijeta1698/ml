@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Machine Failure Predction Test</title>
+	<link rel="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+	<style>
+	body {
+		padding: 0;
+		font-family: consolas;
+		margin: 0;
+		background-image: url('https://wallup.net/wp-content/uploads/2019/09/902434-electronics-machine-technology-circuit-electronic-computer-technics-detail-psychedelic-abstract-pattern-748x468.jpg');
+	}
+
+	.mainHeader {
+		background-color: rgba(0, 0, 0, 0.76);
+		padding: 20px;
+		font-size: 25px;
+		color: white;
+		text-align: center;
+        border-bottom: 5px solid;
+        animation: blinker 5s infinite;
+	}
+
+    @keyframes blinker{
+        0%{border-color: white;}
+        50%{border-color: black;}
+        100%{border-color: white;}
+    }
+
+	.mainCont {
+		background-color: rgba(255, 255, 255, 0.562);
+		width: 95%;
+		margin: 10px auto;
+		padding: 20px;
+		text-align: center;
+	}
+
+	.txtBox {
+		padding: 5px 15px;
+		border: 0;
+		border-top-right-radius: 5px;
+		border-top-left-radius: 5px;
+		border-bottom: 3px solid rgb(68, 68, 68);
+		color: rgb(56, 56, 56);
+		padding-left: 5px;
+		font-size: 20px;
+	}
+
+	.btnAction {
+		padding: 5px 15px;
+		text-decoration: none;
+		background-color: rgb(20, 20, 20);
+		color: white;
+		cursor: pointer;
+		border-radius: 5px;
+		font-size: 18px;
+	}
+
+	.btnAction:hover {
+		background-color: rgb(39, 39, 39);
+	}
+
+	.myTable {
+		border: 0;
+		border-collapse: collapse;
+		width: 100%;
+		margin: auto;
+		text-align: left;
+	}
+
+	.subCont {
+		width: 50%;
+		margin: auto;
+	}
+	.cred{background:red !important }
+	</style>
+</head>
+
+<body>
+	<div class="header mainHeader jumbotron">
+		<h1>Predictive Maintenance </h1> </div>
+	<div class="mainCont">
+		<div class="subCont">
+			<form action="{{ url_for('predict') }}" id="mainForm" method="post">
+				<table class="myTable">
+					<tbody>
+						<tr>
+							<td>
+								<input name="txtAirTemp" type="text" required placeholder="Air Temperature [K]" class="txtBox"> </td>
+							<td> <button type="submit"  class="btnAction cred" name="btnAirTemp"> PREDICT</button> </td>
+						</tr>
+						<tr>
+							<td><input name="txtProcessTemp" type="text" required placeholder="Process Temperature" class="txtBox"> </td>
+							<td><a href="http://127.0.0.1:5000/score" class="btnAction">SCORE</a></td>
+						</tr>
+						<tr>
+							<td>
+								<input name="txtRationalSpeed" type="text" required placeholder="Rotational Speed" class="txtBox"> </td>
+								<td><a href="http://127.0.0.1:5000/Lasso_score" class="btnAction">LASSO SCORE</a></td>
+						</tr>
+						<tr>
+							<td>
+								<input name="txtTroque" type="text" required placeholder="Torque[Mm]" class="txtBox"> </td>
+
+							<td><a href="http://127.0.0.1:5000/Ridge_score" class="btnAction">RIDGE SCORE</a></td>
+						</tr>
+						<tr>
+							<td>
+								<input name="txtToolware" type="text" required placeholder="Toolware[min]" class="txtBox"> </td>
+
+							<td>
+								<a href="http://127.0.0.1:5000/ElasticNet_score" class="btnAction">ElasticNET SCORE</a>
+                            </td>
+						</tr>
+						<tr>
+							<td>
+								<input name="txtTwf" type="text" required placeholder="TWF" class="txtBox"> </td>
+							<td>
+								<a href="http://127.0.0.1:5000/Multicolinearity" class="btnAction">MULTICOLINEARITY</a>
+                            </td>
+						</tr>
+						<tr>
+							<td><input name="txtHdf" type="text" required placeholder="HDF" class="txtBox"> </td>
+							<td><a href="http://127.0.0.1:5000/MyObservations" class="btnAction">MY OBSERVATIONS</a></td>
+						</tr>
+						<tr>
+							<td>
+								<input name="txtPwf" type="text" required placeholder="PWF" class="txtBox"> </td>
+							<td>
+								<a href="http://127.0.0.1:5000/Report" class="btnAction">REPORT</a> </td>
+						</tr>
+						<tr>
+							<td>
+								<input name="txtOsf" type="text" required placeholder="OSF" class="txtBox"> </td>
+							<td>
+								<a href="http://127.0.0.1:5000/adjusted_r2" class="btnAction">ADJUSTED R SQUARED</a> </td>
+						</tr>
+						<tr>
+							<td>
+								<input name="txtRns" type="text" required placeholder="RNS" class="txtBox"> </td>
+							<td> </td>
+						</tr>
+					</tbody>
+				</table>
+			</form>
+		</div>
+	</div>
+</body>
+
+</html>
